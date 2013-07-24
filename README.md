@@ -3,7 +3,11 @@ p5-Bio-SeqWare-Config
 
 Wraps handling of the settings file for SeqWare.
 
-Project Home: https://github.com/theobio/p5-Bio-SeqWare-Config
+Project Home:
+https://github.com/theobio/p5-Bio-SeqWare-Config
+
+Using cpanm, will support install direct from github:
+$ cpanm git://github.com/theobio/p5-Bio-SeqWare-Config.git
 
 Legal
 -----
