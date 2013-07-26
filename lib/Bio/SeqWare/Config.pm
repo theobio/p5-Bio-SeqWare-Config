@@ -20,6 +20,10 @@ Version 0.000001
 
 our $VERSION = '0.000001';
 our $DEFAULT_FILE_NAME = ".seqware/settings";
+our $KNOWN_KEYS = {
+    'dbUser' => \&_dbUserErr,
+    'dbPassword' => \&_dbPasswordErr,
+};
 
 =head1 SYNOPSIS
 
@@ -146,6 +150,17 @@ sub getDefaultFile {
     }
 }
 
+=head2 getAllKnownKeys()
+
+    Returns an array of all known keys, in alphabetical order.
+
+=cut
+
+sub getAllKnownKeys {
+    my $class = shift;
+    return sort( keys ( %{$Bio::SeqWare::Config::KNOWN_KEYS} ));
+}
+
 =head1 METHODS
 
 =head2 $obj->getFile()
@@ -231,6 +246,77 @@ sub getNovelKeys {
     my @keys = ();
 
     return @keys;
+}
+
+sub _dbUserErr {
+     my $val = shift;
+     my $err;
+     if (! defined) {
+         $err = "dbUser must be defined.\n";
+     }
+     elsif ( length($val) < 1 ) {
+         $err = "dbUser may not be blank. \n";
+     }
+     return $err;
+}
+
+=head2 _errorIfUndefined
+
+Takes a value as a parameter. Returns an error message if the tested value
+is undefined, otherwise returns an empty string.
+
+=cut
+
+
+sub _errorIfUndefined {
+    my $val = shift;
+    print "DEBUG Received \"$val\"\n";
+    my $err = "";
+    if (! defined $val) {
+        $err .= "Error: undefined value.\n";
+    }
+    return $err;
+}
+
+=head2 _errorIfRef
+
+Takes a value as a parameter. Returns an error message if the tested value
+is a reference. Returns an empty string if the value is undefined or a normal
+scalar value.
+
+=cut
+
+sub _errorIfRef {
+    my $val = shift;
+    my $err = "";
+    my $refType = ref $val;
+    if (defined $val && ref $val) {
+        my $refType = ref $val;
+        $err = "Error: ref value ($refType).\n";
+    }
+    return $err;
+}
+
+=head2 _errorIfEmptyString
+
+Takes a value as a parameter. Returns an error message if the tested value
+is undefined, a reference, or an empty string. Otherwise returns an empty
+string.
+
+=cut
+
+sub _errorIfEmptyString {
+    my $val = shift;
+    my $err = _errorIfUndefined($val);
+    if (! $err) {
+        $err = _errorIfRef( $val );
+    }
+    if (! $err) {
+        if (length "$val" == 0 ) {
+            $err .= "Error: empty string.\n";
+        }
+    }
+    return $err;
 }
 
 =head1 AUTHOR

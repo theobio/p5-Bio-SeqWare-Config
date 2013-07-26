@@ -1,10 +1,13 @@
 #! /usr/bin/env perl
 
-use Test::More tests => 1 + 18;
+use File::Spec;
+use Test::More tests => 1 + 21;
 
 BEGIN {
 	use_ok( 'Bio::SeqWare::Config' );
 }
+
+our $CLASS = 'Bio::SeqWare::Config';
 
 subtest( 'new()' => \&testNewDefault     );
 subtest( 'new()' => \&testNewFile        );
@@ -29,6 +32,10 @@ subtest( 'hasKnownKey()'  => \&testHasKnownKey  );
 subtest( 'isValid()'         => \&testIsValid         );
 subtest( 'getAllKnownKeys()' => \&testGetAllKnownKeys );
 subtest( 'isKnownKey()'      => \&testIsKnownKey      );
+
+subtest( 'errorIfUndefined()'   => \&test_ErrorIfUndefined   );
+subtest( 'errorIfRef()'         => \&test_ErrorIfRef         );
+subtest( 'errorIfEmptyString()' => \&test_ErrorIfEmptyString );
 
 
 sub testNewDefault {
@@ -62,7 +69,11 @@ sub testNewBad {
 sub testGetDefaultFile {
 	plan( tests => 1 );
 	{
-    	fail( "NOT IMPLEMENTED" );
+        my $homeDir = $ENV{"HOME"};
+        my $file = $Bio::SeqWare::Config::DEFAULT_FILE_NAME;
+        my $want = File::Spec->catfile( $homeDir, $file);
+        my $got = $CLASS->getDefaultFile();
+    	is( $want, $got );
 	}
 }
 
@@ -139,13 +150,17 @@ sub testHasKnownKey {
 sub testGetAllKnownKeys {
 	plan( tests => 1 );
 	{
-    	fail( "NOT IMPLEMENTED" );
+	    my @want = sort( qw( dbUser dbPassword ));
+	    my @got = $CLASS->getAllKnownKeys();
+    	is_deeply( \@want, \@got );
 	}
 }
 
 sub testIsKnownKey {
-	plan( tests => 1 );
+    my @keys = $CLASS->getAllKnownKeys().length;
+	plan( tests => @keys.length );
 	{
+	    
     	fail( "NOT IMPLEMENTED" );
 	}
 }
@@ -154,5 +169,75 @@ sub testIsValid {
 	plan( tests => 1 );
 	{
     	fail( "NOT IMPLEMENTED" );
+	}
+}
+
+sub test_ErrorIfUndefined {
+	plan( tests => 4 );
+	{
+        my $goodval = "Not undefined";
+        is( $CLASS->_errorIfUndefined( $goodVal ), "", "String is defined" );
+	}
+	{
+        my $goodval = "";
+        is( $CLASS->_errorIfUndefined( $goodVal ), "", "Empty is defined" );
+	}
+	{
+        my $goodval = {};
+        is( $CLASS->_errorIfUndefined( $goodVal ), "", "Hash ref is defined" );
+	}
+	{
+        my $badVal;
+        $want = "Error: undefined value.\n";
+        $got = $CLASS->_errorIfUndefined( $badVal );
+        is( $got, $want, "Error when undefined" );
+	}
+}
+
+sub test_ErrorIfRef {
+	plan( tests => 4 );
+	{
+        my $goodval = "Not ref";
+        is( $CLASS->_errorIfRef( $goodVal ), "", "String is not ref" );
+	}
+	{
+        my $goodval = "";
+        is( $CLASS->_errorIfRef( $goodVal ), "", "Empty is not ref" );
+	}
+	{
+        my $goodval;
+        is( $CLASS->_errorIfRef( $goodVal ), "", "Undefined is not ref" );
+	}
+	{
+        my $badVal = {};
+        $want = "Error: ref value (HASH).\n";
+        $got = $CLASS->_errorIfRef( $badVal );
+        is( $got, $want, "Error if refernece type" );
+	}
+}
+
+sub test_ErrorIfEmptyString {
+	plan( tests => 4 );
+	{
+        my $goodval = "Not empty string";
+        is( $CLASS->_errorIfEmptyString( $goodVal ), "", "String is not empty" );
+	}
+	{
+        my $badval = "";
+        $want = "Error: empty string.\n";
+        $got = $CLASS->_errorIfEmptyString( $badval );
+        is( $got, $want, "Error when empty" );
+	}
+	{
+        my $badval = "";
+        $want = "Error: undefined.\n";
+        $got = $CLASS->_errorIfEmptyString( $badval );
+        is( $got, $want, "Error when empty" );
+	}
+	{
+        my $badVal = {};
+        $want = "Error: ref value (HASH).\n";
+        $got = $CLASS->_errorIfEmptyString( $badVal );
+        is( $got, $want, "Error if refernece type" );
 	}
 }
