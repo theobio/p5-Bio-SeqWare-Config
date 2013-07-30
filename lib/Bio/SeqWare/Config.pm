@@ -90,11 +90,12 @@ revisions and API changes.
 
 =cut
 
+
 =head1 CLASS METHODS
 
 =cut
 
-=head2 new
+=head2 new( ... )
 
     my $ConfigObj = Bio::Seqware::Config->new()
     my $ConfigObj = Bio::Seqware::Config->new( $filename )
@@ -262,7 +263,7 @@ sub hasKey {
     return defined $key && exists( $self->{'_settings'}->{"$key"} );
 }
 
-=head2 get()
+=head2 get( $key )
 
 Retrieve specified value from the config file. If the key is not present in the
 config file, returns undefined.
@@ -384,7 +385,9 @@ mainly due to the effort needed to separate user and developer documentation.
 Pay no attention to code behind the curtain; these are not the methods you are
 looking for. If you use these function I<you are doing something wrong.>
 
-=head2 _errorIfUndefined
+=cut
+
+=head2 _errorIfUndefined( $val )
 
 Takes a value as a parameter. Returns an error message if the tested value
 is undefined, otherwise returns an empty string.
@@ -401,7 +404,7 @@ sub _errorIfUndefined {
     return $err;
 }
 
-=head2 _errorIfRef
+=head2 _errorIfRef( $val )
 
 Takes a value as a parameter. Returns an error message if the tested value
 is a reference. Returns an empty string if the value is undefined or a normal
@@ -421,7 +424,7 @@ sub _errorIfRef {
     return $err;
 }
 
-=head2 _errorIfEmptyString
+=head2 _errorIfEmptyString( $val )
 
 Takes a value as a parameter. Returns an error message if the tested value
 is undefined, a reference, or an empty string. Otherwise returns an empty
@@ -443,6 +446,7 @@ sub _errorIfEmptyString {
     }
     return $err;
 }
+
 
 =head1 AUTHOR
 
