@@ -41,8 +41,6 @@ Accesses SeqWare settings config file data as a hash.
     my $isKnownKey   = Bio::SeqWare::Config::isKnownKey( "keyToCheck" );
     my $isValid      = Bio::SeqWare::Config->isValid( "knownKey", "valToCheck" );
 
-
-
 # DESCRIPTION
 
 Represents the seqware settigs object. The object is created from a settings
@@ -70,7 +68,7 @@ revisions and API changes.
 
 Create a new `Bio::SeqWare::Config` object from a settings/config file. If no
 `$filename` is specified, it will use the default filename, _i.e._ `new()`
-is equivalent to `new( Bio::SeqWare::Config-`getDefaultFile() )>.
+is equivalent to `new( Bio::SeqWare::Config->getDefaultFile() )`.
 
 It is also possible to specify the file name as well as a bunch of other
 parameters as a hash reference. See [Config::General ](http://search.cpan.org/perldoc?https:#/metacpan.org/module/Config::General)
@@ -84,20 +82,6 @@ NOTE: If a parameters hash is used to set config file options, but no
 
     Returns the default config filepath, if found, or undefined. This is
     normally ~/.seqware/settings but could be something else.
-=cut
-
-sub getDefaultFile {
-    my $class = shift;
-    my $homeDir = File::HomeDir->my\_home();
-    my $defaultFileName = ".seqware/settings";
-    my $file = File::Spec->catfile( $homeDir, $defaultFileName );
-    if ( -f $file ) {
-        return $file;
-    }
-    else {
-        return;
-    }
-}
 
 ## getAllKnownKeys()
 
@@ -110,7 +94,7 @@ undefined
 
 ## isValid( $key, $value )
 
-# METHODS
+# INSTANCE METHODS
 
 ## getFiles()
 
@@ -153,6 +137,13 @@ Retrieve all novel keys from the config file that are unknown/unexpected, in
 alphabetical order. These are the novel keys and can not be validated. They
 are included to allow for extension or shared use of this settings file parser.
 
+# INTERNAL METHODS
+
+NOTE: These are methods are for _internal use only_. They are documented here
+mainly due to the effort needed to separate user and developer documentation.
+Pay no attention to code behind the curtain; these are not the methods you are
+looking for. If you use these function _you are doing something wrong._
+
 ## \_errorIfUndefined
 
 Takes a value as a parameter. Returns an error message if the tested value
@@ -174,13 +165,7 @@ string.
 
 Stuart R. Jefferys, `srjefferys (at) gmail (dot) com`
 
-# BUGS
-
-Please report any bugs or feature requests to `bug-p5-bio-seqware-config at rt.cpan.org`, or through
-the web interface at [http://rt.cpan.org/NoAuth/ReportBug.html?Queue=p5-Bio-Seqware-Config](http://rt.cpan.org/NoAuth/ReportBug.html?Queue=p5-Bio-Seqware-Config).  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-# INSTALLATION, CONTRIBUTION, AND SUPPORT
+# CONTRIBUTING
 
 This module is developed and hosted on GitHub, at
 ["/github.com/theobio/p5-Bio-SeqWare-Config" in p5-Bio-SeqWare-Config https:](http://search.cpan.org/perldoc?p5-Bio-SeqWare-Config https:#/github.com/theobio/p5-Bio-SeqWare-Config). It
@@ -188,18 +173,30 @@ is not currently on CPAN, and I don't have any immediate plans to post it
 there unless requested by core SeqWare developers (It is not my place to
 set out a module name hierarchy for the project as a whole :)
 
+# INSTALLATION
+
 You can install this module directly from github using
 
     $ cpanm git://github.com/theobio/p5-Bio-SeqWare-Config.git
 
 or by downloading the module as a zip arckive using your web browser (from
 ( [https://github.com/theobio/p5-Bio-SeqWare-Config/archive/master.zip](https://github.com/theobio/p5-Bio-SeqWare-Config/archive/master.zip) )
-unzipping it, and then executing the normal (C>Module::Build>) incantation:
+unzipping it, and then executing the normal (`Module::Build`) incantation:
 
      perl Build.PL
      ./Build
      ./Build test
      ./Build install
+
+# BUGS AND SUPPORT
+
+No known bugs are present in this release. Unknown bugs are a virtual
+certainty. Please report bugs (and feature requests) though the
+Github issue tracker associated with the development repository, at:
+
+[https://github.com/theobio/p5-Bio-SeqWare-Config/issues](https://github.com/theobio/p5-Bio-SeqWare-Config/issues)
+
+Note: you must have a GitHub account to submit issues.
 
 # ACKNOWLEDGEMENTS
 

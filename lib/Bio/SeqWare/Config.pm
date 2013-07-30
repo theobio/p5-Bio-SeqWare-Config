@@ -12,6 +12,8 @@ use Config::General; # Parse config files, does the heavy lifting.
 
 Bio::SeqWare::Config - The SeqWare settings file object
 
+=cut
+
 =head1 VERSION
 
 Version 0.000001
@@ -67,6 +69,7 @@ Accesses SeqWare settings config file data as a hash.
     my $isKnownKey   = Bio::SeqWare::Config::isKnownKey( "keyToCheck" );
     my $isValid      = Bio::SeqWare::Config->isValid( "knownKey", "valToCheck" );
 
+=cut
 
 =head1 DESCRIPTION
 
@@ -89,6 +92,8 @@ revisions and API changes.
 
 =head1 CLASS METHODS
 
+=cut
+
 =head2 new
 
     my $ConfigObj = Bio::Seqware::Config->new()
@@ -97,7 +102,7 @@ revisions and API changes.
 
 Create a new C<Bio::SeqWare::Config> object from a settings/config file. If no
 C<$filename> is specified, it will use the default filename, I<i.e.> C<new()>
-is equivalent to C<new( Bio::SeqWare::Config->getDefaultFile() )>.
+is equivalent to C<< new( Bio::SeqWare::Config->getDefaultFile() ) >>.
 
 It is also possible to specify the file name as well as a bunch of other
 parameters as a hash reference. See L<Config::General | https://metacpan.org/module/Config::General>
@@ -151,6 +156,7 @@ sub new {
 
     Returns the default config filepath, if found, or undefined. This is
     normally ~/.seqware/settings but could be something else.
+
 =cut
 
 sub getDefaultFile {
@@ -217,7 +223,10 @@ sub isValid {
     return 1;
 }
 
-=head1 METHODS
+
+=head1 INSTANCE METHODS
+
+=cut
 
 =head2 getFiles()
 
@@ -358,13 +367,20 @@ sub getNovelKeys {
     return @novelKeys;
 }
 
+
+=head1 INTERNAL METHODS
+
+NOTE: These are methods are for I<internal use only>. They are documented here
+mainly due to the effort needed to separate user and developer documentation.
+Pay no attention to code behind the curtain; these are not the methods you are
+looking for. If you use these function I<you are doing something wrong.>
+
 =head2 _errorIfUndefined
 
 Takes a value as a parameter. Returns an error message if the tested value
 is undefined, otherwise returns an empty string.
 
 =cut
-
 
 sub _errorIfUndefined {
     my $class = shift;
@@ -423,13 +439,9 @@ sub _errorIfEmptyString {
 
 Stuart R. Jefferys, C<srjefferys (at) gmail (dot) com>
 
-=head1 BUGS
+=cut
 
-Please report any bugs or feature requests to C<bug-p5-bio-seqware-config at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=p5-Bio-Seqware-Config>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-=head1 INSTALLATION, CONTRIBUTION, AND SUPPORT
+=head1 CONTRIBUTING
 
 This module is developed and hosted on GitHub, at
 L<p5-Bio-SeqWare-Config https://github.com/theobio/p5-Bio-SeqWare-Config>. It
@@ -437,22 +449,42 @@ is not currently on CPAN, and I don't have any immediate plans to post it
 there unless requested by core SeqWare developers (It is not my place to
 set out a module name hierarchy for the project as a whole :)
 
+=cut
+
+=head1 INSTALLATION
+
 You can install this module directly from github using
 
     $ cpanm git://github.com/theobio/p5-Bio-SeqWare-Config.git
 
 or by downloading the module as a zip arckive using your web browser (from
 ( L<https://github.com/theobio/p5-Bio-SeqWare-Config/archive/master.zip> )
-unzipping it, and then executing the normal (C>Module::Build>) incantation:
+unzipping it, and then executing the normal (C<Module::Build>) incantation:
 
      perl Build.PL
      ./Build
      ./Build test
      ./Build install
 
+=cut
+
+=head1 BUGS AND SUPPORT
+
+No known bugs are present in this release. Unknown bugs are a virtual
+certainty. Please report bugs (and feature requests) though the
+Github issue tracker associated with the development repository, at:
+
+L<https://github.com/theobio/p5-Bio-SeqWare-Config/issues>
+
+Note: you must have a GitHub account to submit issues.
+
+=cut
+
 =head1 ACKNOWLEDGEMENTS
 
 This module was developed for use with L<SegWare | http://seqware.github.io>.
+
+=cut
 
 =head1 LICENSE AND COPYRIGHT
 
