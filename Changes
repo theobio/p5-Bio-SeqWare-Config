@@ -1,5 +1,9 @@
 Revision history for p5-Bio-Seqware-Config
 
+0.000.002 (pre-release)
+    [DOC] - Modified POD structure to match updated template.
+            Fixed some formating issues.
+
 0.000.001 2013-07-27 19:00:00 EST
-          [MAJOR] - Initial version
+    [MAJOR] - Initial version
 
