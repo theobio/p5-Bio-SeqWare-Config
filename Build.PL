@@ -12,7 +12,9 @@ my $builder = Module::Build->new(
         'Test::More' => 0,
     },
     requires => {
-        'perl' => 5.006,
+        'perl' => '5.008',
+        'File::HomeDir' => '0',
+        'Config::General' => '0',
     },
     add_to_cleanup      => [ 'p5-Bio-Seqware-Config-*' ],
     create_makefile_pl => 'traditional',

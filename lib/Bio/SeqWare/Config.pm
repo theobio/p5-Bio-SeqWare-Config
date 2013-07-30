@@ -5,7 +5,7 @@ use strict;        # Don't allow unsafe perl constructs.
 use warnings;      # Enable all optional warnings.
 use Carp;          # Base the locations of reported errors on caller's code.
 use File::Spec;    # Use portable file paths
-use File::HomeDir; # Portably identify user's home directory
+use File::HomeDir; # Portably identify user home directory.
 use Config::General; # Parse config files, does the heavy lifting.
 
 =head1 NAME
@@ -16,11 +16,12 @@ Bio::SeqWare::Config - The SeqWare settings file object
 
 =head1 VERSION
 
-Version 0.000001
+Version 0.000.002
 
 =cut
 
-our $VERSION = '0.000002'; # Pre release
+our $VERSION = '0.000002';
+
 our $_KNOWN_KEYS = {
     'dbUser'      => [\&_errorIfEmptyString],
     'dbPassword'  => [\&_errorIfEmptyString],
@@ -162,6 +163,7 @@ normally C<~/.seqware/settings> but could be something else.
 
 sub getDefaultFile {
     my $class = shift;
+
     my $homeDir = File::HomeDir->my_home();
     my $defaultFileName = ".seqware/settings";
     my $file = File::Spec->catfile( $homeDir, $defaultFileName );

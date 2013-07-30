@@ -4,7 +4,7 @@
       "Stuart R. Jefferys <srjefferys@gmail.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4004, CPAN::Meta::Converter version 2.130880",
+   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "open_source"
    ],
@@ -26,21 +26,23 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.006"
+            "Config::General" : "0",
+            "File::HomeDir" : "0",
+            "perl" : "5.008"
          }
       }
    },
    "provides" : {
       "Bio::SeqWare::Config" : {
          "file" : "lib/Bio/SeqWare/Config.pm",
-         "version" : "0.000001"
+         "version" : "0.000002"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "license" : [
-         "http://www.gnu.org/licenses/old-licenses/gpl-1.0.txt"
+         "http://opensource.org/licenses/gpl-license.php"
       ]
    },
-   "version" : "0.000001"
+   "version" : "0.000002"
 }

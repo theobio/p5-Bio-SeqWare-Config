@@ -2,6 +2,7 @@
 
 # Using support methods to create temporary config file for parsing.
 # This file can get left behind, so note its name if tests fail.
+# It is always safe to delete this file.
 use File::Spec;   # Portable file handling for creating temp files
 use Carp;         # Caller-relative error messages
 use IO::File;     # File handles as variables

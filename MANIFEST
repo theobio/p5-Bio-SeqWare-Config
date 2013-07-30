@@ -1,12 +1,15 @@
 Build.PL
 Changes
 lib/Bio/SeqWare/Config.pm
+LICENSE
+Makefile.PL
 MANIFEST			This list of files
-README
+README.md
 t/00-load.t
+t/config.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
-Makefile.PL
+TODO.md
 META.yml
 META.json

@@ -3,6 +3,8 @@
 # FUTURE VERSION TARGETED CHANGES
 
 # TO ASSIGN
+2013-07-30 [API] - Drop getAll, use get() with no key.
+                 - Add $key parameter mode to getKnown() and getNovel)
 
 # IN CONSIDERATION
 

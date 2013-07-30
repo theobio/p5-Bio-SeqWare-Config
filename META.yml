@@ -1,0 +1,26 @@
+---
+abstract: 'The SeqWare settings file object'
+author:
+  - 'Stuart R. Jefferys <srjefferys@gmail.com>'
+build_requires:
+  Test::More: 0
+configure_requires:
+  Module::Build: 0.40
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921'
+license: open_source
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Bio-SeqWare-Config
+provides:
+  Bio::SeqWare::Config:
+    file: lib/Bio/SeqWare/Config.pm
+    version: 0.000002
+requires:
+  Config::General: 0
+  File::HomeDir: 0
+  perl: 5.008
+resources:
+  license: http://opensource.org/licenses/gpl-license.php
+version: 0.000002

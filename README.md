@@ -4,7 +4,7 @@ Bio::SeqWare::Config - The SeqWare settings file object
 
 # VERSION
 
-Version 0.000001
+Version 0.000.002
 
 # SYNOPSIS
 
