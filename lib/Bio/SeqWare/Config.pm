@@ -20,7 +20,7 @@ Version 0.000001
 
 =cut
 
-our $VERSION = '0.000001';
+our $VERSION = '0.000002'; # Pre release
 our $_KNOWN_KEYS = {
     'dbUser'      => [\&_errorIfEmptyString],
     'dbPassword'  => [\&_errorIfEmptyString],
