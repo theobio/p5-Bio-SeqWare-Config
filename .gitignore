@@ -21,3 +21,6 @@ pm_to_blib
 
 # For eclipse
 .project
+
+# For this project only
+Bio-SeqWare-Config-*
