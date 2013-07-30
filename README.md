@@ -47,13 +47,13 @@ Represents the seqware settigs object. The object is created from a settings
 file (usually the one in the default location but a different file can be
 specified). The settings can be retrieved as key-value pairs. Keys are either
 known or novel. Known keys are keys that are in the list returned by
-Bio::SeqWare::Config->getAllKnownKeys(). All other keys are novel. The value
+`Bio::SeqWare::Config->getAllKnownKeys()`. All other keys are novel. The value
 of known keys is validated, unknown keys are passed through without validation.
 If validity is specifically checked for a novel key, it will fail;
-Bio::SeqWare::Config->isValid( "noveKey", "anyValue" ) == false.
+`Bio::SeqWare::Config->isValid( "noveKey", "anyValue" ) == false`.
 
-This class uses Config::General to do the file parsing and relies on that
-module for the heavy lifting.
+This class uses [Config::General ](http://search.cpan.org/perldoc?https:#/metacpan.org/module/Config::General)
+to do the file parsing and relies on that module for the heavy lifting.
 
 WARNING: This module is an alpha release, it is subject to future major
 revisions and API changes.
@@ -80,8 +80,8 @@ NOTE: If a parameters hash is used to set config file options, but no
 
 ## getDefaultFile()
 
-    Returns the default config filepath, if found, or undefined. This is
-    normally ~/.seqware/settings but could be something else.
+Returns the default config filepath, if found, or undefined. This is
+normally `~/.seqware/settings` but could be something else.
 
 ## getAllKnownKeys()
 
@@ -94,11 +94,20 @@ undefined
 
 ## isValid( $key, $value )
 
+Validate $value as allowed for $key, returning true if allowed, false if not.
+If key is not a known key, will return false for any value (including undefined).
+
+Note: Validation is the minimal, up-front validation that can be performed on
+one $key's-$value independently of any others.
+
 # INSTANCE METHODS
 
 ## getFiles()
 
-Returns the file read to get settings values. Returned as an array as th
+Returns the file read to get settings values. Returned as an array as the
+backing code of Config::General allows multiple config files to be read and
+merged, and we might want to support that in future. Currently will only ever
+return a 1 element array.
 
 ## hasKey( $key )
 
@@ -168,7 +177,7 @@ Stuart R. Jefferys, `srjefferys (at) gmail (dot) com`
 # CONTRIBUTING
 
 This module is developed and hosted on GitHub, at
-["/github.com/theobio/p5-Bio-SeqWare-Config" in p5-Bio-SeqWare-Config https:](http://search.cpan.org/perldoc?p5-Bio-SeqWare-Config https:#/github.com/theobio/p5-Bio-SeqWare-Config). It
+[p5-Bio-SeqWare-Config ](http://search.cpan.org/perldoc?https:#/github.com/theobio/p5-Bio-SeqWare-Config). It
 is not currently on CPAN, and I don't have any immediate plans to post it
 there unless requested by core SeqWare developers (It is not my place to
 set out a module name hierarchy for the project as a whole :)
