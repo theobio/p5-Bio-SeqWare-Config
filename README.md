@@ -60,7 +60,7 @@ revisions and API changes.
 
 # CLASS METHODS
 
-## new
+## new( ... )
 
     my $ConfigObj = Bio::Seqware::Config->new()
     my $ConfigObj = Bio::Seqware::Config->new( $filename )
@@ -114,7 +114,7 @@ return a 1 element array.
 Returns true if $key was found in the settings file, false otherwise. Will die
 if check a $key that can not be used as a perl hash key.
 
-## get()
+## get( $key )
 
 Retrieve specified value from the config file. If the key is not present in the
 config file, returns undefined.
@@ -153,18 +153,18 @@ mainly due to the effort needed to separate user and developer documentation.
 Pay no attention to code behind the curtain; these are not the methods you are
 looking for. If you use these function _you are doing something wrong._
 
-## \_errorIfUndefined
+## \_errorIfUndefined( $val )
 
 Takes a value as a parameter. Returns an error message if the tested value
 is undefined, otherwise returns an empty string.
 
-## \_errorIfRef
+## \_errorIfRef( $val )
 
 Takes a value as a parameter. Returns an error message if the tested value
 is a reference. Returns an empty string if the value is undefined or a normal
 scalar value.
 
-## \_errorIfEmptyString
+## \_errorIfEmptyString( $val )
 
 Takes a value as a parameter. Returns an error message if the tested value
 is undefined, a reference, or an empty string. Otherwise returns an empty
