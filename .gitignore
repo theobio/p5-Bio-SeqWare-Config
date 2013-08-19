@@ -12,14 +12,15 @@ Makefile
 Makefile.old
 MANIFEST.bak
 MYMETA.*
-nytprof.out
 pm_to_blib
+pod2htm*.tmp
 
 # For mac OS X
 .DS_Store
 
 # For eclipse
 .project
+.includepath
 
 # For this project only
 Bio-SeqWare-Config-*

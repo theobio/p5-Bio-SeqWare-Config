@@ -16,11 +16,11 @@ Bio::SeqWare::Config - The SeqWare settings file object
 
 =head1 VERSION
 
-Version 0.000.002
+Version 0.000.003   # Pre-release
 
 =cut
 
-our $VERSION = '0.000002';
+our $VERSION = '0.000003';  # Pre-release
 
 our $_KNOWN_KEYS = {
     'dbUser'      => [\&_errorIfEmptyString],
@@ -30,7 +30,9 @@ our $_KNOWN_KEYS = {
 
     'seqWareVersion'  => [\&_errorIfEmptyString],
     'seqWareHome'     => [\&_errorIfEmptyString],
-    'dataRoot'        => [\&_errorIfEmptyString],
+    'dataRoot'           => [\&_errorIfEmptyString],
+    'uploadBamBaseDir'   => [\&_errorIfEmptyString],
+    'uploadFastqBaseDir' => [\&_errorIfEmptyString],
     'clusterName'     => [\&_errorIfEmptyString],
 };
 
@@ -91,6 +93,58 @@ revisions and API changes.
 
 =cut
 
+=head1 KNOWN KEYS
+
+The following keys have pre-defined meanings:
+
+=over4
+
+=item dbUser
+
+The user to log into the seqware DBMS as.
+
+=item dbPassword
+
+The password to authenticated the specified dbuser to the seqware DBMS.
+
+=item dbHost
+
+The address (IP or domain name) of the server running the seqware DBMS.
+
+=item dbSchema
+
+The name of the database schema to use in the seqware DBMS. Usually "seqware_meta_db"
+
+=item seqWareVersion
+
+The version of this installation of seqware, used in the names of directories
+when outputing data.
+
+=item seqWareHome
+
+Where this installation of seqware is, used to find scripts and internal data
+
+=item dataRoot
+
+The root directory under which all processed data is output to when generated.
+
+=item uploadBamBaseDir
+
+The root directory under which uploads for BAM files are generated to. This
+is separate from the dataRoot
+
+=item uploadFastqBaseDir
+
+The root directory under which uploads for FASTQ files are generated to. This
+is separate from the dataRoot and from uploadBamBaseDir.
+
+=item clusterName
+
+The name of the cluster the data should be run on.
+
+=back
+
+=cut
 
 =head1 CLASS METHODS
 
@@ -468,13 +522,19 @@ set out a module name hierarchy for the project as a whole :)
 
 =head1 INSTALLATION
 
-You can install this module directly from github using
+You can install a version of this module directly from github using
 
-    $ cpanm git://github.com/theobio/p5-Bio-SeqWare-Config.git
+    $ cpanm git://github.com/theobio/p5-Bio-SeqWare-Config.git@v0.000.003
 
-or by downloading the module as a zip arckive using your web browser (from
-( L<https://github.com/theobio/p5-Bio-SeqWare-Config/archive/master.zip> )
-unzipping it, and then executing the normal (C<Module::Build>) incantation:
+Any version can be specified by modifying the tag name, following the @;
+the above installs the latest I<released> version. If you leave off the @version
+part of the link, you can install the bleading edge pre-release, if you don't
+care about bugs...
+
+You can select and download any package for any released version of this module
+directly from L<https://github.com/theobio/p5-Bio-SeqWare-Config/releases>.
+Installing is then a matter of unzipping it, changing into the unzipped
+directory, and then executing the normal (C>Module::Build>) incantation:
 
      perl Build.PL
      ./Build

@@ -32,6 +32,9 @@ seqWareVersion   0.7.0
 seqWareHome "/Users/srj/Documents/Dev/Seqware/UNC_20110808/seqware-pipeline"
 dataRoot    "/Users/srj/BigData"
 
+uploadFastqBaseDir = "/Users/srj/BigData/UploadFastq"
+uploadBamBaseDir   = "/Users/srj/BigData/UploadBam"
+
 clusterName = SRJ
 
 novelKey = 42
@@ -46,9 +49,11 @@ my $KNOWN_DATA_HR = {
     'dbHost'      => "swprod.bioinf.unc.edu",
     'dbSchema'    => "seqware_meta_db",
     'seqWareVersion'   => '0.7.0',
-    'seqWareHome'      => "/Users/srj/Documents/Dev/Seqware/UNC_20110808/seqware-pipeline",
-    'dataRoot'         => "/Users/srj/BigData",
     'clusterName'      => "SRJ",
+    'seqWareHome'        => "/Users/srj/Documents/Dev/Seqware/UNC_20110808/seqware-pipeline",
+    'dataRoot'           => "/Users/srj/BigData",
+    'uploadFastqBaseDir' => "/Users/srj/BigData/UploadFastq",
+    'uploadBamBaseDir'   => "/Users/srj/BigData/UploadBam",
 };
 
 my $NOVEL_DATA_HR = {

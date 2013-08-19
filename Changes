@@ -1,6 +1,12 @@
-Revision history for p5-Bio-Seqware-Config
+Revision history for p5-Bio-SeqWare-Config
 
-0.000.002 (pre-release)
+0.000.003 PRE-RELEASE
+    [API] - Added new SeqWare settings: uploadBamBaseDir & uploadFastqBaseDir
+    [DEV] - Cleaned up .gitignore and MANIFEST.SKIP files
+    [DOC] - Added description of known keys.
+    [DOC] - Modified install instructions to use version.
+
+0.000.002 2013-07-30 19:30:00 EST
     [DOC] - Modified POD structure to match updated template.
             Fixed some formating issues.
     [BUGFIX] - Corrected installation error messages
