@@ -3,15 +3,15 @@ require 5.008;
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-  'INSTALLDIRS' => 'site',
   'EXE_FILES' => [],
+  'NAME' => 'Bio::SeqWare::Config',
   'PREREQ_PM' => {
-                   'Test::More' => 0,
                    'Config::General' => '0',
-                   'File::HomeDir' => '0'
+                   'File::HomeDir' => '0',
+                   'Test::More' => 0
                  },
-  'VERSION_FROM' => 'lib/Bio/SeqWare/Config.pm',
   'PL_FILES' => {},
-  'NAME' => 'Bio::SeqWare::Config'
+  'INSTALLDIRS' => 'site',
+  'VERSION_FROM' => 'lib/Bio/SeqWare/Config.pm'
 )
 ;

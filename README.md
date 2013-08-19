@@ -4,7 +4,7 @@ Bio::SeqWare::Config - The SeqWare settings file object
 
 # VERSION
 
-Version 0.000.002
+Version 0.000.003
 
 # SYNOPSIS
 
@@ -57,6 +57,53 @@ to do the file parsing and relies on that module for the heavy lifting.
 
 WARNING: This module is an alpha release, it is subject to future major
 revisions and API changes.
+
+# KNOWN KEYS
+
+The following keys have pre-defined meanings:
+
+- dbUser
+
+The user to log into the seqware DBMS as.
+
+- dbPassword
+
+The password to authenticated the specified dbuser to the seqware DBMS.
+
+- dbHost
+
+The address (IP or domain name) of the server running the seqware DBMS.
+
+- dbSchema
+
+The name of the database schema to use in the seqware DBMS. Usually "seqware\_meta\_db"
+
+- seqWareVersion
+
+The version of this installation of seqware, used in the names of directories
+when outputing data.
+
+- seqWareHome
+
+Where this installation of seqware is, used to find scripts and internal data
+
+- dataRoot
+
+The root directory under which all processed data is output to when generated.
+
+- uploadBamBaseDir
+
+The root directory under which uploads for BAM files are generated to. This
+is separate from the dataRoot
+
+- uploadFastqBaseDir
+
+The root directory under which uploads for FASTQ files are generated to. This
+is separate from the dataRoot and from uploadBamBaseDir.
+
+- clusterName
+
+The name of the cluster the data should be run on.
 
 # CLASS METHODS
 
@@ -184,13 +231,19 @@ set out a module name hierarchy for the project as a whole :)
 
 # INSTALLATION
 
-You can install this module directly from github using
+You can install a version of this module directly from github using
 
-    $ cpanm git://github.com/theobio/p5-Bio-SeqWare-Config.git
+    $ cpanm git://github.com/theobio/p5-Bio-SeqWare-Config.git@v0.000.003
 
-or by downloading the module as a zip arckive using your web browser (from
-( [https://github.com/theobio/p5-Bio-SeqWare-Config/archive/master.zip](https://github.com/theobio/p5-Bio-SeqWare-Config/archive/master.zip) )
-unzipping it, and then executing the normal (`Module::Build`) incantation:
+Any version can be specified by modifying the tag name, following the @;
+the above installs the latest _released_ version. If you leave off the @version
+part of the link, you can install the bleading edge pre-release, if you don't
+care about bugs...
+
+You can select and download any package for any released version of this module
+directly from [https://github.com/theobio/p5-Bio-SeqWare-Config/releases](https://github.com/theobio/p5-Bio-SeqWare-Config/releases).
+Installing is then a matter of unzipping it, changing into the unzipped
+directory, and then executing the normal (C>Module::Build>) incantation:
 
      perl Build.PL
      ./Build

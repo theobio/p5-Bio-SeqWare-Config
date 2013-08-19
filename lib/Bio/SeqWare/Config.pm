@@ -16,11 +16,11 @@ Bio::SeqWare::Config - The SeqWare settings file object
 
 =head1 VERSION
 
-Version 0.000.003   # Pre-release
+Version 0.000.003
 
 =cut
 
-our $VERSION = '0.000003';  # Pre-release
+our $VERSION = '0.000003';
 
 our $_KNOWN_KEYS = {
     'dbUser'      => [\&_errorIfEmptyString],
@@ -30,10 +30,11 @@ our $_KNOWN_KEYS = {
 
     'seqWareVersion'  => [\&_errorIfEmptyString],
     'seqWareHome'     => [\&_errorIfEmptyString],
+    'clusterName'     => [\&_errorIfEmptyString],
+
     'dataRoot'           => [\&_errorIfEmptyString],
     'uploadBamBaseDir'   => [\&_errorIfEmptyString],
     'uploadFastqBaseDir' => [\&_errorIfEmptyString],
-    'clusterName'     => [\&_errorIfEmptyString],
 };
 
 
@@ -97,7 +98,7 @@ revisions and API changes.
 
 The following keys have pre-defined meanings:
 
-=over4
+=over 4
 
 =item dbUser
 
