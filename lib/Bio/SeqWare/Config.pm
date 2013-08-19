@@ -16,11 +16,11 @@ Bio::SeqWare::Config - The SeqWare settings file object
 
 =head1 VERSION
 
-Version 0.000.003
+Version 0.000.004    # PRE-RELEASE
 
 =cut
 
-our $VERSION = '0.000003';
+our $VERSION = '0.000004';     # PRE-RELEASE
 
 our $_KNOWN_KEYS = {
     'dbUser'      => [\&_errorIfEmptyString],
@@ -525,7 +525,7 @@ set out a module name hierarchy for the project as a whole :)
 
 You can install a version of this module directly from github using
 
-    $ cpanm git://github.com/theobio/p5-Bio-SeqWare-Config.git@v0.000.003
+    $ cpanm git://github.com/theobio/p5-Bio-SeqWare-Config.git@v0.000.004
 
 Any version can be specified by modifying the tag name, following the @;
 the above installs the latest I<released> version. If you leave off the @version
